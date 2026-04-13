@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EXAMPLES } from "../data.js";
 import TabButton from "./TabButton.jsx";
+import Section from "./Section.jsx";
 
 export default function Examples(){
 
@@ -34,8 +35,7 @@ export default function Examples(){
   }
 
     return (
-        <section id="examples">
-            <h2>Examples</h2>
+        <Section title="Excamples" id="examples">
             <menu>
             
                 {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
@@ -49,6 +49,6 @@ export default function Examples(){
             </menu>
             {/* 변수에 담아서 쓰는 방법 */}
             {tabContent}
-        </section>
+        </Section>
     )
 }
