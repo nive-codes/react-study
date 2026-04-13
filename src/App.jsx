@@ -13,11 +13,9 @@ function App() {
 
   //component 함수에서 최상위에서 사용(if, for로 감싸지 말 것.), handleSelected 같은 내부 함수에서 호출하면 x.컴포넌트 함수에서 즉시 사용해야함.
   //첫번쨰 지정하는 것은 현재 상태 값.
-  const [selectedTopic, setSelectedTopic] = useState('components'); 
-
-  let tabContent = 'Please click a button';
-
-
+  // const [selectedTopic, setSelectedTopic] = useState('components'); 
+  const [selectedTopic, setSelectedTopic] = useState(); 
+  
 
   // TabButton 컴포넌트로 전달할 function(TabButton 컴포넌트에서 onClick 이벤트핸들러 통해 실행 된다.)
   // onSelect라는 props로 전달
@@ -31,6 +29,25 @@ function App() {
   }
 
   console.log('APP COMPONENT EXECUTING');
+
+  //변수를 활용한 state 선택 없을때 처리(동적)
+  let tabContent = <p>Please select a topic</p>;
+
+  if(selectedTopic) {
+    tabContent = (
+       <div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                  <code>
+                    {EXAMPLES[selectedTopic].code}
+                  </code>
+                </pre>
+              </div>
+    )
+
+  }
+
 
 
   return (
@@ -80,20 +97,46 @@ function App() {
             {/* <TabButton label="Components" /> */}
             
           </menu>
+          
           {/* Dynamic Content */}
           {/* let tabContent 로 선언한 동적 값을 그대로 출력 */}
           {/* {tabContent}   */}
           {/* {selectedTopic} */}
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>
-                {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>
 
+          {/* &&를 써서 참일때 값이 바로 나오도록도 가능. null 생략이 가능하다. */}
+          {/* {!selectedTopic ? <p>Please select a topic.</p> : null} */}
+          {/* {!selectedTopic && <p>Please Select a topic.</p>} */}
+          {/* {selectedTopic && (
+            <div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                  <code>
+                    {EXAMPLES[selectedTopic].code}
+                  </code>
+                </pre>
+              </div>
+          )} */}
+
+          {/* 삼항 연산자를 통해 값이 state의 값이 있을때와 없을때를 처리 */}
+            {/* {!selectedTopic ? <p>Please select a topic.</p> : 
+              (
+                <div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                  <code>
+                    {EXAMPLES[selectedTopic].code}
+                  </code>
+                </pre>
+              </div>
+              )
+            }  */}
+
+          {/* 변수에 담아서 쓰는 방법 */}
+          {tabContent}
+
+          
         </section>
       </main>
     </div>
