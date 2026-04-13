@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EXAMPLES } from "../data.js";
 import TabButton from "./TabButton.jsx";
 import Section from "./Section.jsx";
+import Tabs from "./Tabs.jsx";
 
 export default function Examples(){
 
@@ -36,18 +37,18 @@ export default function Examples(){
 
     return (
         <Section title="Excamples" id="examples">
-            <menu>
-                {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
-            <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton> 
-            <TabButton isSelected={selectedTopic === 'jsx'} onClick={function() {handleSelect('jsx')}}>JSX</TabButton> 
-            <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Porps</TabButton> 
-            <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton> 
-            {/* CoreConcept와 같은 방식 */}
-            {/* <TabButton label="Components" /> */}
-            
-            </menu>
-            {/* 변수에 담아서 쓰는 방법 */}
+          {/* button자체를 props로 넘기므로써 selectTopic같은 것을 props로 안받을 수 있다. buttons로 그냥 바로 처리를 가능하다. */}
+          <Tabs buttons={ 
+              <>
+              <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton> 
+              <TabButton isSelected={selectedTopic === 'jsx'} onClick={function() {handleSelect('jsx')}}>JSX</TabButton> 
+              <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Porps</TabButton> 
+              <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton> 
+              </>
+            }>
             {tabContent}
+          </Tabs>
+        
         </Section>
     )
 }
