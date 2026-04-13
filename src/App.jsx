@@ -4,7 +4,7 @@ import {CORE_CONCEPTS} from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
-
+import {EXAMPLES} from './data.js';
 
 
 
@@ -13,7 +13,7 @@ function App() {
 
   //component 함수에서 최상위에서 사용(if, for로 감싸지 말 것.), handleSelected 같은 내부 함수에서 호출하면 x.컴포넌트 함수에서 즉시 사용해야함.
   //첫번쨰 지정하는 것은 현재 상태 값.
-  const [selectedTopic, setSelectedTopic] = useState('Please click a button'); 
+  const [selectedTopic, setSelectedTopic] = useState('components'); 
 
   let tabContent = 'Please click a button';
 
@@ -26,7 +26,7 @@ function App() {
     // console.log(selectedButton);
     // tabContent = selectedButton;
     setSelectedTopic(selectedButton); // 컴포넌트 함수에 있는 useSate의 두번쨰 배열 -> 변경값 적용
-    console.log(selectedTopic);
+    console.log(selectedTopic); // 최신 값이 아닌 상태 변경 요청한 이후 이전 값이 찍힘.
 
   }
 
@@ -71,6 +71,7 @@ function App() {
 
             {/* 익명 함수, function() {} 이런식으로 한번 감싸서 호출해서
              파라미터를 함수에 넘길 수 있음. 그럼 그걸 props로 component로 넘어감 */}
+             {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
             <TabButton onSelect={() => handleSelect('components')}>Components</TabButton> 
             <TabButton onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
             <TabButton onSelect={() => handleSelect('props')}>Porps</TabButton> 
@@ -82,7 +83,16 @@ function App() {
           {/* Dynamic Content */}
           {/* let tabContent 로 선언한 동적 값을 그대로 출력 */}
           {/* {tabContent}   */}
-          {selectedTopic}
+          {/* {selectedTopic} */}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
 
         </section>
       </main>
