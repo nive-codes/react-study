@@ -11,6 +11,10 @@ import TabButton from './components/TabButton.jsx';
 
 function App() {
 
+  //component 함수에서 최상위에서 사용(if, for로 감싸지 말 것.), handleSelected 같은 내부 함수에서 호출하면 x.컴포넌트 함수에서 즉시 사용해야함.
+  //첫번쨰 지정하는 것은 현재 상태 값.
+  const [selectedTopic, setSelectedTopic] = useState('Please click a button'); 
+
   let tabContent = 'Please click a button';
 
 
@@ -19,8 +23,11 @@ function App() {
   // onSelect라는 props로 전달
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
-    console.log(selectedButton);
-    tabContent = selectedButton;
+    // console.log(selectedButton);
+    // tabContent = selectedButton;
+    setSelectedTopic(selectedButton); // 컴포넌트 함수에 있는 useSate의 두번쨰 배열 -> 변경값 적용
+    console.log(selectedTopic);
+
   }
 
   console.log('APP COMPONENT EXECUTING');
@@ -74,8 +81,8 @@ function App() {
           </menu>
           {/* Dynamic Content */}
           {/* let tabContent 로 선언한 동적 값을 그대로 출력 */}
-          {tabContent}  
-          
+          {/* {tabContent}   */}
+          {selectedTopic}
 
         </section>
       </main>
