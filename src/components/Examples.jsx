@@ -39,7 +39,7 @@ export default function Examples(){
         <Section title="Excamples" id="examples">
           {/* button자체를 props로 넘기므로써 selectTopic같은 것을 props로 안받을 수 있다. buttons로 그냥 바로 처리를 가능하다. */}
           <Tabs 
-          buttonsContainer="menu"
+          // buttonsContainer="menu"  //default로 지정한 경우 작성 안해도 됨
           buttons={ 
               <>
               <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton> 
