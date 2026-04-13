@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import {CORE_CONCEPTS} from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcept.jsx';
@@ -9,13 +11,19 @@ import TabButton from './components/TabButton.jsx';
 
 function App() {
 
+  let tabContent = 'Please click a button';
+
+
+
   // TabButton 컴포넌트로 전달할 function(TabButton 컴포넌트에서 onClick 이벤트핸들러 통해 실행 된다.)
   // onSelect라는 props로 전달
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
-    console.log(selectedButton)
-    console.log("Hello World- Selected!")
+    console.log(selectedButton);
+    tabContent = selectedButton;
   }
+
+  console.log('APP COMPONENT EXECUTING');
 
 
   return (
@@ -54,15 +62,20 @@ function App() {
             {/* CoreConcept 과 다르게 태그로 감싸서 하는거 컴포넌트 합성이라고 함 */}
             {/* <TabButton onSelect={handleSelect}>Components</TabButton>  */}
 
+            {/* 익명 함수, function() {} 이런식으로 한번 감싸서 호출해서
+             파라미터를 함수에 넘길 수 있음. 그럼 그걸 props로 component로 넘어감 */}
             <TabButton onSelect={() => handleSelect('components')}>Components</TabButton> 
-            <TabButton onSelect={handleSelect}>JSX</TabButton> 
-            <TabButton onSelect={handleSelect}>Porps</TabButton> 
-            <TabButton onSelect={handleSelect}>State</TabButton> 
+            <TabButton onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
+            <TabButton onSelect={() => handleSelect('props')}>Porps</TabButton> 
+            <TabButton onSelect={() => handleSelect('state')}>State</TabButton> 
             {/* CoreConcept와 같은 방식 */}
             {/* <TabButton label="Components" /> */}
             
           </menu>
-          Dynamic Content
+          {/* Dynamic Content */}
+          {/* let tabContent 로 선언한 동적 값을 그대로 출력 */}
+          {tabContent}  
+          
 
         </section>
       </main>

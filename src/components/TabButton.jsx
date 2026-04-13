@@ -10,6 +10,8 @@ export default function TabButton({children, onSelect}) {
 
     // 리액트는 이런 명령형으로 상호작용을 지정하지 않음.
     // document.querySelector('button').addEventListener('click', () => {})
+        
+    console.log('TAB BUTTON COMPONENT EXECUTING');
     
     //onclick은 함수를 호출한다
     return <li><button onClick={onSelect}>{children}</button></li>;
