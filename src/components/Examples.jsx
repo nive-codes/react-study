@@ -37,12 +37,11 @@ export default function Examples(){
     return (
         <Section title="Excamples" id="examples">
             <menu>
-            
                 {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
-            <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect('components')}>Components</TabButton> 
-            <TabButton isSelected={selectedTopic === 'jsx'} onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
-            <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect('props')}>Porps</TabButton> 
-            <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect('state')}>State</TabButton> 
+            <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton> 
+            <TabButton isSelected={selectedTopic === 'jsx'} onClick={function() {handleSelect('jsx')}}>JSX</TabButton> 
+            <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Porps</TabButton> 
+            <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton> 
             {/* CoreConcept와 같은 방식 */}
             {/* <TabButton label="Components" /> */}
             
