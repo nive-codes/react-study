@@ -3,7 +3,7 @@
 // }
 
 // 변수로 받은걸 바로 속성을 추출해서 활용 가능
-export default function TabButton({children, onSelect, isSeleted}) {
+export default function TabButton({children, onSelect, isSelected}) {
     // function handleClick() {
     //     console.log("Hello World!");
     // }
@@ -14,7 +14,7 @@ export default function TabButton({children, onSelect, isSeleted}) {
     console.log('TAB BUTTON COMPONENT EXECUTING');
     
     //onclick은 함수를 호출한다
-    return <li><button className={isSeleted && 'active'} onClick={onSelect}>{children}</button></li>;
+    return <li><button className={isSelected && 'active'} onClick={onSelect}>{children}</button></li>;
 }
 
 //label로 받아서 처리도 가능

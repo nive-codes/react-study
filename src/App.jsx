@@ -45,10 +45,7 @@ function App() {
                 </pre>
               </div>
     )
-
   }
-
-
 
   return (
     <div>
@@ -57,7 +54,14 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept 
+            {/* 동적으로 있는 배열 만큼 처리 */}
+            {/* map 메서드를 활용하여 jsx로 데이터를 변환해서 표시 */}
+            {/* jsx라는게 script파일 내 html이 포함된 소스 */}
+            {/* 고유한 키를 가지고 있는게 좋음. => item들의 구별을 위해 */}
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept key={conceptItem.title} {...conceptItem}/>
+            ))}
+            {/* <CoreConcept 
               // props : 직접 데이터/함수 전달 
               // title="Components"
               // description="The Core UI building block"
@@ -73,7 +77,7 @@ function App() {
               />
             <CoreConcept {...CORE_CONCEPTS[1]}/>
             <CoreConcept {...CORE_CONCEPTS[2]}/>
-            <CoreConcept {...CORE_CONCEPTS[3]}/>
+            <CoreConcept {...CORE_CONCEPTS[3]}/> */}
           </ul>
 
         </section>
@@ -89,10 +93,10 @@ function App() {
             {/* 익명 함수, function() {} 이런식으로 한번 감싸서 호출해서
              파라미터를 함수에 넘길 수 있음. 그럼 그걸 props로 component로 넘어감 */}
              {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
-            <TabButton isSeleted={selectedTopic == 'components'} onSelect={() => handleSelect('components')}>Components</TabButton> 
-            <TabButton isSeleted={selectedTopic == 'jsx'} onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
-            <TabButton isSeleted={selectedTopic == 'props'} onSelect={() => handleSelect('props')}>Porps</TabButton> 
-            <TabButton isSeleted={selectedTopic == 'state'} onSelect={() => handleSelect('state')}>State</TabButton> 
+            <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect('components')}>Components</TabButton> 
+            <TabButton isSelected={selectedTopic === 'jsx'} onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
+            <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect('props')}>Porps</TabButton> 
+            <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect('state')}>State</TabButton> 
             {/* CoreConcept와 같은 방식 */}
             {/* <TabButton label="Components" /> */}
             
