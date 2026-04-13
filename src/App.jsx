@@ -89,10 +89,10 @@ function App() {
             {/* 익명 함수, function() {} 이런식으로 한번 감싸서 호출해서
              파라미터를 함수에 넘길 수 있음. 그럼 그걸 props로 component로 넘어감 */}
              {/* 식별자를 통해 data.js의 EXAMPLES의 객체와 일치 */}
-            <TabButton onSelect={() => handleSelect('components')}>Components</TabButton> 
-            <TabButton onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
-            <TabButton onSelect={() => handleSelect('props')}>Porps</TabButton> 
-            <TabButton onSelect={() => handleSelect('state')}>State</TabButton> 
+            <TabButton isSeleted={selectedTopic == 'components'} onSelect={() => handleSelect('components')}>Components</TabButton> 
+            <TabButton isSeleted={selectedTopic == 'jsx'} onSelect={function() {handleSelect('jsx')}}>JSX</TabButton> 
+            <TabButton isSeleted={selectedTopic == 'props'} onSelect={() => handleSelect('props')}>Porps</TabButton> 
+            <TabButton isSeleted={selectedTopic == 'state'} onSelect={() => handleSelect('state')}>State</TabButton> 
             {/* CoreConcept와 같은 방식 */}
             {/* <TabButton label="Components" /> */}
             
